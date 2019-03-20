@@ -1,0 +1,133 @@
+<HTML>
+<head>
+    <title>jQury validate</title>
+    <link rel="stylesheet" type="text/css" href="/libs/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/libs/css/validate.css" />
+    <script type='text/javascript' src='/libs/jquery/jquery.min.js' ></script>
+    <script type='text/javascript' src='/libs/jquery/jquery.validate.min.js' ></script>
+    <!-- <script type='text/javascript' src='/libs/jquery/messages_zh.js' ></script> -->
+    <script type='text/javascript' src='/libs/jquery/jquery.form.js' ></script>
+    <script type='text/javascript' src='/libs/bootstrap/js/bootstrap-combobox.js' ></script>
+
+    <style>
+        .color_cube {
+            display: inline-block;
+            width: 20px;
+            height: 16px;
+        }
+
+        .blue {
+            background-color: #6495ED;
+        }
+        .orange {
+            background-color: #FFA500;
+        }
+        .purple {
+            background-color: #800080;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container" style="margin: 20px auto; width: 75%">
+        <form id="add-card-form" action="/succ.html" method="POST">
+		  <div class="form-group row">
+
+		  <div class="form-group row">
+            <label for="username" class="col-sm-4 form-control-label">username</label>
+		    <div class="col-sm-6">
+		      <input type="" class="form-control" name="username">
+		    </div>
+		  </div>
+
+		  <div class="form-group row">
+            <label for="password" class="col-sm-4 form-control-label">password</label>
+		    <div class="col-sm-6">
+		      <input type="password" class="form-control" name="password">
+		    </div>
+		  </div>
+
+		  <div class="form-group row">
+            <label for="int" class="col-sm-4 form-control-label">int</label>
+		    <div class="col-sm-6">
+		      <input type="" class="form-control" name="int">
+		    </div>
+		  </div>
+
+		  <div class="form-group row">
+            <label for="float" class="col-sm-4 form-control-label">float</label>
+		    <div class="col-sm-6">
+		      <input type="" class="form-control" name="float">
+		    </div>
+		  </div>
+
+		  <div class="form-group row">
+		    <div class="col-sm-offset-2 col-sm-6">
+		      <button type="submit" id="submit-btn" class="btn btn-success">submit</button>
+		    </div>
+		  </div>
+
+          <div id='output1' class='alert' style='display: none'></div>
+
+		</form>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var rules = {
+                username: 'required',
+                password: 'required',
+                int: 'required digits',
+                float: 'required number',
+            }
+            var messages = {};
+            var $inputs = $('form input');
+
+            for (var i = 0; i < $inputs.length; ++i){
+                var $input = $($inputs[i]);
+                var k = $input.attr('name');
+                var msg = $input.attr('placeholder');
+
+                if (!rules[k]){
+                    rules[k] = 'required';
+                }
+                if (msg){
+                    messages[k] = msg;
+                }
+            }
+            $('#add-card-form').validate({
+                invalidHandler:function(e){
+                    return false;
+                },
+                rules: rules,
+                messages: messages,
+            });
+
+            $('#submit-btn').click(function(){
+                if ( $('#add-card-form').valid() ){
+                    alert('valid! works!')
+                    return true;
+                }
+                else {
+                    alert('not valid!')
+                    return false;
+                }
+            });
+
+            $('#add-card-form input').blur(function(){
+                $(this).valid();
+            });
+        });
+    </script>
+
+
+</body>
+</HTML>

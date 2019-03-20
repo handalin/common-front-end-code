@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start
+}
+
+.main-zone {
+    display: inline-block;
+    margin: 0;
+    width: 65%;
+}
+
+.transaction-zone {
+    display: inline-block;
+    margin: 0;
+    width: 30%;
+    min-height: 400px;
+}
+
+.card-zone {
+    display: inline-block;
+    width: 440px;
+    height: 280px;
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+}
+
+.info-zone {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+    font: 22px bold;
+}
+
+.info-box {
+    display: block;
+    width: 100%;
+    margin-left: 30px;
+}
+
+.bank {
+    font-size: 22px;
+}
+
+.owner {
+    width: 90%;
+    height: 80px;
+    margin: 0 auto;
+    font-size: 34px;
+}
+
+.card_seq {
+    width: 90%;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 28px;
+}
+
+.valid_date_txt {
+    margin-top: 20px;
+    display: inline-block;
+}
+.valid_date {
+    font-size: 14px;
+    width: 80px;
+    margin-top: 20px;
+}
+
+.form-zone {
+    display: inline-block;
+    width: 47%;
+    margin: 20px 20px 0 0;
+    padding: 10px;
+    min-height: 40px;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.form-zone form {
+    position: relative;
+}
+
+.form-title-wrap {
+    margin: 10px 5px 20px 5px;
+}
+.form-title {
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.transaction-zone {
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.transaction-title {
+    font-size: 20px;
+}
+

@@ -1,0 +1,149 @@
+<HTML>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/validate.css" />
+    <script type='text/javascript' src='/static/jquery/jquery.min.js' ></script>
+    <script type='text/javascript' src='/static/jquery/jquery.validate.min.js' ></script>
+    <script type='text/javascript' src='/static/jquery/messages_zh.js' ></script>
+    <script type='text/javascript' src='/static/jquery/jquery.form.js' ></script>
+    <script type='text/javascript' src='/static/bootstrap/js/bootstrap-combobox.js' ></script>
+    <script type='text/javascript' src='/static/js/add_card.js?{{ vcode }}' ></script>
+
+    <script>
+        {% autoescape %}
+    </script>
+
+    <style>
+        .color_cube {
+            display: inline-block;
+            width: 20px;
+            height: 16px;
+        }
+
+        .blue {
+            background-color: #6495ED;
+        }
+        .orange {
+            background-color: #FFA500;
+        }
+        .purple {
+            background-color: #800080;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container" style="margin: 20px auto; width: 75%">
+        <form id="add-card-form" action="/api/card/add" method="POST">
+		  <div class="form-group row">
+
+		  <div class="form-group row">
+		    <label class="col-sm-2">归属用户</label>
+			<select name='uid' class="col-sm-6 combobox">
+			  <option></option>
+              {% for u in users %}
+			  <option value="{{ u['uid'] }}">{{ u['name'] }}</option>
+              {% end %}
+			</select>
+		  </div>
+
+		  <div class="form-group row">
+            <span>新用户？点击</span><a href='add_user'>这里</a>
+          </div>
+
+		  <div class="form-group row">
+		    <label class="col-sm-2">银行</label>
+			<select name='bank' class="col-sm-6 combobox">
+			  <option></option>
+              {% for bank in banks %}
+			  <option value="{{ bank }}">{{ bank }}</option>
+              {% end %}
+			</select>
+		  </div>
+
+          {% for f in text_fields %}
+		  <div class="form-group row">
+		    <label for="{{ f['en'] }}" class="col-sm-2 form-control-label">{{ f['ch'] }}</label>
+		    <div class="col-sm-6">
+              {% if f.get('type', '') == 'textarea' %}
+		      <textarea type="" class="form-control" name="{{ f['en'] }}" id="{{ f['en'] }}" placeholder="{{ f.get('place_holder', '') }}" rows="3"></textarea>
+              {% else %}
+		      <input type="{{ f.get('type', '') }}" class="form-control" name="{{ f['en'] }}" id="{{ f['en'] }}" placeholder="{{ f.get('place_holder', '') }}">
+              {% end %}
+		    </div>
+		  </div>
+          {% end %}
+
+		  <div class="form-group row">
+		    <div class="col-sm-offset-2 col-sm-6">
+		      <button type="submit" id="submit-btn" class="btn btn-success">提交</button>
+		    </div>
+		  </div>
+
+          <div id='output1' class='alert' style='display: none'></div>
+
+		</form>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //$('.combobox').combobox();
+            var rules = {
+                uid: 'required digits',
+                bank: 'required',
+                credit_line: 'required number',
+                bill_date: 'required digits',
+                pay_date: 'required digits',
+                latest_bill: 'required number',
+                available_credit: 'required number',
+                curr_debt: 'required number',
+            }
+            var messages = {};
+            var $inputs = $('form input');
+
+            for (var i = 0; i < $inputs.length; ++i){
+                var $input = $($inputs[i]);
+                var k = $input.attr('name');
+                var msg = $input.attr('placeholder');
+
+                if (!rules[k]){
+                    rules[k] = 'required';
+                }
+                if (msg){
+                    messages[k] = msg;
+                }
+            }
+            $('#add-card-form').validate({
+                debug: true,
+                invalidHandler:function(e){
+                    return false;
+                },
+                submitHandler:function(form){
+                },
+                rules: rules,
+                messages: messages,
+            });
+
+            $('#add-card-form').click(function(){
+                if ( $('#add-card-form').valid() ){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            })
+        });
+    </script>
+
+
+</body>
+</HTML>

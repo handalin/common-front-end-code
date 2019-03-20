@@ -1,0 +1,157 @@
+.f-left {
+    float: left;
+}
+.f-right {
+    float: right;
+}
+
+/* w 表示 width 相关 */
+.w-full {
+    width: 100%;
+}
+.w-half {
+    width: 50%;
+}
+.w-per12 {
+    width: 12%;
+}
+.w-per15 {
+    width: 15%;
+}
+.w-per20 {
+    width: 20%;
+}
+.w-per30 {
+    width: 30%;
+}
+.w-per70 {
+    width: 70%;
+}
+.w-per80 {
+    width: 80%;
+}
+
+/* h 表示 height 相关 */
+.h-full {
+    height: 100%;
+}
+.h-half {
+    height: 50%;
+}
+.h-50 {
+    height: 50px;
+}
+.h-min-400 {
+    min-height: 400px;
+}
+.h-min-1000 {
+    min-height: 1000px;
+}
+
+
+/* ft 表示 font 相关 */
+.ft-10 {
+    font-size: 10px;
+}
+.ft-14 {
+    font-size: 14px;
+}
+.ft-18 {
+    font-size: 18px;
+}
+.ftc-white {
+    color: white;
+}
+.ftc-black {
+    color: black;
+}
+
+/* fx 表示 flex 相关 */
+.fx {
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+.inline-fx {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+.fx-h-center {
+    justify-content:center;
+}
+.fx-v-center {
+    align-items:center;
+}
+
+/* bgc (BackGroundColor) 表示背景颜色相关 */
+.bgc-blue {
+    background-color: blue;
+}
+.bgc-red {
+    background-color: red;
+}
+.bgc-green {
+    background-color: green;
+}
+.bgc-purple {
+    background-color: purple;
+}
+.bgc-grey {
+    background-color: grey;
+}
+.bgc-light {
+    background-color: #eee;
+}
+.bgc-black {
+    background-color: black;
+}
+.bgc-white {
+    background-color: white;
+}
+.bgc-light-green {
+    background-color: #3c763d;
+}
+.bgc-light-red {
+    background-color: #a94442;
+}
+
+/* color 表示文字颜色相关 */
+.color-light-green {
+    color: #3c763d;
+}
+.color-light-red {
+    color: #a94442;
+}
+.color-white {
+    color: white;
+}
+
+
+/*
+    自动消失的信息提示框
+*/
+.alert {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    transform: translate(-50%,-50%);
+    z-index: 99999;
+    text-align: center;
+    padding: 15px;
+    border-radius: 3px;
+    font-size: 20px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
